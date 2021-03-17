@@ -11,22 +11,25 @@ export const Register = () => {
     const history = useHistory()
 
     const handleInputChange = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         const newUser = { ...registerUser }
         newUser[event.target.id] = event.target.value
         setRegisterUser(newUser)
     }
-
-// ############ handleAccountSelect needs help ###############
-
+    
+    // ############ handleAccountSelect needs help ###############
+    
     const handleAccountSelect = (event) => {
         console.log(event.target.value)
+        const newUser = { ...registerUser }
+        newUser[event.target.id] = event.target.value
         // event.preventDefault()
         if(event.target.value === "1") {
-            registerUser.competitor = true
+            newUser.competitor = true
         } else {
-            registerUser.competitor = false
+            newUser.competitor = false
         }
+        setRegisterUser(newUser)
     }
 
     const existingUserCheck = () => {
@@ -89,7 +92,7 @@ export const Register = () => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="competitor">Select Account Type </label>
-                    <select name="competitor" id="competitor" value={registerUser.competitor} onChange={handleAccountSelect}>
+                    <select name="competitor" id="competitor" value={registerUser.competitor === true ? "1" : "2"} onChange={handleAccountSelect}>
                         <option value="0">Select</option>
                         <option id="1" value="1" required onChange={handleInputChange}>Competitor</option>
                         <option id="2" value="2" required onChange={handleInputChange}>Contributor</option>
