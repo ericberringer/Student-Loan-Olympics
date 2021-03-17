@@ -5,15 +5,28 @@ import "./Login.css"
 
 export const Register = () => {
 
-    const [registerUser, setRegisterUser] = useState({ firstName: "", lastName: "", email: "" })
+    const [registerUser, setRegisterUser] = useState({ name: "", email: "", image: "", competitor: true })
     const [conflictDialog, setConflictDialog] = useState(false)
 
     const history = useHistory()
 
     const handleInputChange = (event) => {
+        event.preventDefault()
         const newUser = { ...registerUser }
         newUser[event.target.id] = event.target.value
         setRegisterUser(newUser)
+    }
+
+// ############ handleAccountSelect needs help ###############
+
+    const handleAccountSelect = (event) => {
+        console.log(event.target.value)
+        // event.preventDefault()
+        if(event.target.value === "1") {
+            registerUser.competitor = true
+        } else {
+            registerUser.competitor = false
+        }
     }
 
     const existingUserCheck = () => {
@@ -36,7 +49,9 @@ export const Register = () => {
                         },
                         body: JSON.stringify({
                             email: registerUser.email,
-                            name: `${registerUser.firstName} ${registerUser.lastName}`
+                            name: registerUser.name,
+                            competitor: registerUser.competitor,
+                            image: registerUser.image
                         })
                     })
                         .then(res => res.json())
@@ -63,21 +78,28 @@ export const Register = () => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Application Name</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Please Register for The Student Loan Olympics</h1>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input type="text" name="firstName" id="firstName" className="form-control" placeholder="First name" required autoFocus value={registerUser.firstName} onChange={handleInputChange} />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input type="text" name="lastName" id="lastName" className="form-control" placeholder="Last name" required value={registerUser.lastName} onChange={handleInputChange} />
+                    <label htmlFor="name"> Full Name </label>
+                    <input type="text" name="name" id="name" className="form-control" placeholder="Full Name" required autoFocus value={registerUser.name} onChange={handleInputChange} />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
                     <input type="email" name="email" id="email" className="form-control" placeholder="Email address" required value={registerUser.email} onChange={handleInputChange} />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Sign in </button>
+                    <label htmlFor="competitor">Select Account Type </label>
+                    <select name="competitor" id="competitor" value={registerUser.competitor} onChange={handleAccountSelect}>
+                        <option value="0">Select</option>
+                        <option id="1" value="1" required onChange={handleInputChange}>Competitor</option>
+                        <option id="2" value="2" required onChange={handleInputChange}>Contributor</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <h3>Image upload needs to go here</h3>
+                </fieldset>
+                <fieldset>
+                    <button type="submit"> Register </button>
                 </fieldset>
             </form>
         </main>
