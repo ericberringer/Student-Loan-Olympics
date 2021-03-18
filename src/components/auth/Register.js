@@ -17,8 +17,6 @@ export const Register = () => {
         setRegisterUser(newUser)
     }
     
-    // ############ handleAccountSelect needs help ###############
-    
     const handleAccountSelect = (event) => {
         console.log(event.target.value)
         const newUser = { ...registerUser }
