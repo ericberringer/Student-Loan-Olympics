@@ -12,6 +12,5 @@ export const UserCard = ({user, debt})=> (
         <div>
             <h4>Total Debt: { debt.amount }</h4>
         </div>
-        {console.log(debt.amount)}
     </section>
 )

@@ -18,10 +18,8 @@ export const Register = () => {
     }
     
     const handleAccountSelect = (event) => {
-        console.log(event.target.value)
         const newUser = { ...registerUser }
         newUser[event.target.id] = event.target.value
-        // event.preventDefault()
         if(event.target.value === "1") {
             newUser.competitor = true
         } else {
