@@ -7,7 +7,7 @@ export const DebtProvider = (props) => {
     const [debts, setDebts] = useState([])
 
     const getDebts = () => {
-        return fetch("http://http://localhost:8088/debts")
+        return fetch("http://localhost:8088/debt")
         .then(res => res.json())
         .then(setDebts)
     }
