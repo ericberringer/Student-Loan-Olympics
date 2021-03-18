@@ -19,14 +19,12 @@ export const UserList = () => {
 
     return (
         <>
-        {console.log(debts, users)}
             <h2>User</h2> 
             <div className="users">
                 {
                     users.map(user => {
                         if(user.competitor === true) {
                             const debt = debts.find(debt => debt.userId === user.id)
-                            console.log(debt)
                             return <UserCard key={user.id} user={user} debt={debt}/>
                         }
                     })
