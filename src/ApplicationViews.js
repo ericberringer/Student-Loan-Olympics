@@ -10,16 +10,22 @@ import { Home } from "./Home"
 export const ApplicationViews = () => {
     return (
         <>
-            <Route exact path="/">
-                <Home />
-            </Route>
+            <UserProvider>
+                <DebtProvider>
+
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    
+                </DebtProvider>
+            </UserProvider>
             
         {/* ##### Debt ##### */}
 
             <UserProvider>
                 <DebtProvider>
                     
-                    <Route exact path="/">
+                    <Route path="/debt/create">
                         <DebtForm /> 
                     </Route>
 
