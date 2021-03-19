@@ -5,7 +5,21 @@ import { PropsAndState } from './PropsAndState'
 export const Home = () => {
 
     const { getUserById } = useContext(UserContext)
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState({
+        "name": "",
+        "email": "",
+        "competitor": true,
+        "image": "",
+        "debt": [
+    {
+      "id": 1,
+      "userId": 1,
+      "amount": 0,
+      "description": "",
+      "isComplete": false
+    }
+    ]
+})
     
     useEffect(() => {
         getUserById()
