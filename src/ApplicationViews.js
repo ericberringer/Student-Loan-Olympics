@@ -25,7 +25,7 @@ export const ApplicationViews = () => {
             <UserProvider>
                 <DebtProvider>
                     
-                    <Route path="/debt/create">
+                    <Route path="/debt/edit/:debtId(\d+)">
                         <DebtForm /> 
                     </Route>
 

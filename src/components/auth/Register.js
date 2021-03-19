@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
+import { DebtContext } from "../debt/DebtProvider"
 import { authApi, userStorageKey } from "./authSettings"
 import "./Login.css"
 
 export const Register = () => {
+
+    const { addDebt } = useContext(DebtContext)
 
     const [registerUser, setRegisterUser] = useState({ name: "", email: "", image: "", competitor: true })
     const [conflictDialog, setConflictDialog] = useState(false)
@@ -52,12 +55,19 @@ export const Register = () => {
                             competitor: registerUser.competitor,
                             image: registerUser.image
                         })
+                        // fetch
                     })
                         .then(res => res.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 sessionStorage.setItem(userStorageKey, createdUser.id)
-                                history.push("/")
+                                addDebt({
+                                    userId: createdUser.id,
+                                    amount: 0,
+                                    description: "",
+                                    isComplete: ""
+                                })
+                                .then(history.push("/"))
                             }
                         })
                 }

@@ -12,8 +12,7 @@ export const Home = () => {
         "image": "",
         "debt": [
     {
-      "id": 1,
-      "userId": 1,
+      "userId": 0,
       "amount": 0,
       "description": "",
       "isComplete": false
@@ -24,16 +23,10 @@ export const Home = () => {
     useEffect(() => {
         getUserById()
         .then(user => setUser(user))
-        // .then(() => {
-        //     let currentUser = users.find(user => user.id === parseInt(sessionStorage.app_user_id))
-        //         // setUser(currentUser)
-        //         console.log(users)
-        // })
     }, [])
 
     return (
         <section>
-            {console.log(user)}
             {
             <PropsAndState currentUser={user}/>
             }

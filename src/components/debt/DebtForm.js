@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from "react"
 import "./Debt.css"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { DebtContext } from "./DebtProvider"
 import { UserContext } from "../user/UserProvider"
 
 export const DebtForm = () => {
 
-    const { addDebt } = useContext(DebtContext)
+    const { resetDebt } = useContext(DebtContext)
     const { getUsers } = useContext(UserContext)
 
     const history = useHistory()
+    const {debtId} = useParams()
     
     let currentUser = parseInt(sessionStorage.getItem("app_user_id"))
 
     const [debt, setDebt] = useState({
         userId: currentUser,
-        amount: "",
+        amount: 0,
         description: "",
         isComplete: false
     })
@@ -36,7 +37,8 @@ export const DebtForm = () => {
         if(debt.amount === "" || debt.description === "") {
             window.alert("Amount and description fields must be complete.")
         } else {
-            addDebt({
+            resetDebt({
+                id: debtId,
                 userId: currentUser,
                 amount: parseInt(debt.amount),
                 description: debt.description,
@@ -49,6 +51,7 @@ export const DebtForm = () => {
 
     return (
         <form className="debtForm">
+            <h2 className="debtFormTitle">Debt Form</h2>
             <fieldset>
                 <label htmlFor="debtAmount">Debt Amount: $</label>
                 <input type="text" id="amount" name="debtAmount" required className="amountField" onChange={handleInputChange}/>

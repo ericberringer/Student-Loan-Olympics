@@ -4,6 +4,7 @@ import { Register } from "./components/auth/Register"
 import { userStorageKey } from "./components/auth/authSettings"
 import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./components/auth/Login"
+import { DebtProvider } from "./components/debt/DebtProvider"
 
 export const App = () => (
   <>
@@ -24,8 +25,13 @@ export const App = () => (
     <Route path="/login">
       <Login />
     </Route>
+    
+  <DebtProvider>
+
     <Route path="/register">
       <Register />
     </Route>
+
+  </DebtProvider>
   </>
 );
