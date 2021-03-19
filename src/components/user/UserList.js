@@ -19,6 +19,7 @@ export const UserList = () => {
 
     return (
         <>
+            <button className="addDebtButton" onClick={() => {history.push("/debt/create")}}>Enter Total Debt</button>
             <h2>User</h2> 
             <div className="users">
                 {

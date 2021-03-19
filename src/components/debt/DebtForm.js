@@ -8,6 +8,8 @@ export const DebtForm = () => {
 
     const { addDebt } = useContext(DebtContext)
     const { getUsers } = useContext(UserContext)
+
+    const history = useHistory()
     
     let currentUser = parseInt(sessionStorage.getItem("app_user_id"))
 
@@ -21,7 +23,7 @@ export const DebtForm = () => {
 
     useEffect(() => {
         getUsers()
-    })
+    }, [])
 
     const handleInputChange = (event) => {
         const newDebt = { ...debt }
@@ -29,17 +31,18 @@ export const DebtForm = () => {
         setDebt(newDebt)
     }
 
-    const handleSaveDebt = () => {
-        console.log("I'm working")
+    const handleSaveDebt = (event) => {
+        event.preventDefault()
         if(debt.amount === "" || debt.description === "") {
             window.alert("Amount and description fields must be complete.")
         } else {
             addDebt({
                 userId: currentUser,
-                amount: debt.amount,
+                amount: parseInt(debt.amount),
                 description: debt.description,
                 isComplete: debt.isComplete
             })
+            .then(() => history.push("/"))
         }
     }
 
