@@ -18,7 +18,7 @@ export const Home = () => {
       "isComplete": false
     }
     ]
-})
+})  
     
     useEffect(() => {
         getUserById()
