@@ -12,15 +12,17 @@ export const UserCard = ({user, debt})=> {
     
 return (
 
-    <section className="user">
-        <h3 className="user__name">
-        <Link to={`/users/detail/${user.id}`}>
-          { user.name }
-        </Link>
-        </h3>
-        {user.id === currentUser ? <DebtButton/> : <div></div> }
+    <section className="userCard">
+        <div className="userNameDebt">
+            <h3 className="user__name">
+            <Link to={`/users/detail/${user.id}`}>
+            { user.name }
+            </Link>
+            </h3>
+            <h4>: Total Debt: ${ debt?.amount ? debt.amount : 0 }</h4>
+        </div>
+            {user.id === currentUser ? <DebtButton/> : <div></div> }
         <div>
-            <h4>Total Debt: ${ debt?.amount ? debt.amount : 0 }</h4>
         </div>
     </section>
         )

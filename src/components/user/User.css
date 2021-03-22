@@ -1,0 +1,12 @@
+.competitorTitle {
+    text-align: center;
+}
+
+.userNameDebt {
+    display: flex;
+}
+
+.userCard {
+    border-top: dotted 1px darkslategray;
+    margin-bottom: 10px;
+}

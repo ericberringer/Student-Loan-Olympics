@@ -17,7 +17,7 @@ export const UserList = () => {
 
     return (
         <>
-            <h2>User</h2> 
+            <h2 className="competitorTitle">Competitors</h2> 
             <div className="users">
                 {
                     users.map(user => {

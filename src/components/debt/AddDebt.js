@@ -1,30 +1,22 @@
 import React, { useContext, useEffect, useState } from "react"
 import "./Debt.css"
-import { useHistory, useParams } from 'react-router-dom'
-import { DebtContext } from "./DebtProvider"
-import { UserContext } from "../user/UserProvider"
+import { useHistory } from 'react-router-dom'
+import { DebtContext, DebtProvider } from "./DebtProvider"
 
-export const DebtForm = () => {
-
-    const { resetDebt } = useContext(DebtContext)
-    const { getUsers } = useContext(UserContext)
+export const AddDebt = () => {
+    
+    const { addDebt } = useContext(DebtContext)
 
     const history = useHistory()
-    const {debtId} = useParams()
-    
-    let currentUser = parseInt(sessionStorage.getItem("app_user_id"))
 
+    let registeredUser = parseInt(sessionStorage.getItem("app_user_id"))
+    
     const [debt, setDebt] = useState({
-        userId: currentUser,
+        userId: registeredUser,
         amount: 0,
         description: "",
         isComplete: false
     })
-
-
-    useEffect(() => {
-        getUsers()
-    }, [])
 
     const handleInputChange = (event) => {
         const newDebt = { ...debt }
@@ -32,23 +24,18 @@ export const DebtForm = () => {
         setDebt(newDebt)
     }
 
-    const handleSaveDebt = (event) => {
+    const handleAddDebt = (event) => {
         event.preventDefault()
-        if(debt.amount === "" || debt.description === "") {
-            window.alert("Amount and description fields must be complete.")
-        } else {
-            resetDebt({
-                id: debtId,
-                userId: currentUser,
-                amount: parseInt(debt.amount),
-                description: debt.description,
-                isComplete: debt.isComplete
-            })
-            .then(() => history.push("/"))
-        }
+        addDebt({
+            id: debt.id,
+            userId: registeredUser,
+            amount: parseInt(debt.amount),
+            description: debt.description,
+            isComplete: debt.isComplete
+        })
+        .then(() => history.push("/"))
     }
-
-
+    
     return (
         <form className="debtForm">
             <h2 className="debtFormTitle">Debt Form</h2>
@@ -64,9 +51,9 @@ export const DebtForm = () => {
                 <input type="checkbox" id="checkbox" name="checkbox" onChange={handleInputChange} value={debt.isComplete} defaultChecked={debt.isComplete ? true : false}></input>
                 <label htmlFor="checkbox">Campaign Complete</label>
             </fieldset> */}
-            <button onClick={handleSaveDebt}>
-                Save
+            <button onClick={handleAddDebt}>
+                Add
             </button>
         </form>
-    )
+        )
 }
