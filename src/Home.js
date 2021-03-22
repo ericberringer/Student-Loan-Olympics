@@ -9,15 +9,7 @@ export const Home = () => {
         "name": "",
         "email": "",
         "competitor": true,
-        "image": "",
-        "debt": [
-    {
-      "userId": 0,
-      "amount": 0,
-      "description": "",
-      "isComplete": false
-    }
-    ]
+        "image": ""
 })  
     
     useEffect(() => {

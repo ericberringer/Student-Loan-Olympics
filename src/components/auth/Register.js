@@ -55,19 +55,12 @@ export const Register = () => {
                             competitor: registerUser.competitor,
                             image: registerUser.image
                         })
-                        // fetch
                     })
                         .then(res => res.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 sessionStorage.setItem(userStorageKey, createdUser.id)
-                                addDebt({
-                                    userId: createdUser.id,
-                                    amount: 0,
-                                    description: "",
-                                    isComplete: ""
-                                })
-                                .then(history.push("/"))
+                        history.push("/")
                             }
                         })
                 }

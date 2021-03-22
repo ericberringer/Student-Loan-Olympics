@@ -1,10 +1,12 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { DebtForm } from "./components/debt/DebtForm"
+// import { UserForm } from "./components/user/UserForm"
 import { UserList } from "./components/user/UserList"
 import { DebtProvider } from "./components/debt/DebtProvider"
 import { UserProvider } from "./components/user/UserProvider"
 import { Home } from "./Home"
+import { AddDebt } from "./components/debt/AddDebt"
 
 
 export const ApplicationViews = () => {
@@ -29,6 +31,10 @@ export const ApplicationViews = () => {
                         <DebtForm /> 
                     </Route>
 
+                    <Route path="/debt/create">
+                        <AddDebt />
+                    </Route>
+
                 </DebtProvider>
             </UserProvider>
         
@@ -36,6 +42,10 @@ export const ApplicationViews = () => {
 
             <UserProvider>
                 <DebtProvider>
+
+                    {/* <Route>
+                        <UserForm />
+                    </Route> */}
                     
                     <Route exact path="/">
                         <UserList /> 
