@@ -5,19 +5,6 @@ import { PropsAndState } from './PropsAndState'
 
 export const Home = () => {
 
-//     const { getUserById } = useContext(UserContext)
-//     const [user, setUser] = useState({
-//         "name": "",
-//         "email": "",
-//         "competitor": true,
-//         "image": ""
-// })  
-    
-    
-//     useEffect(() => {
-//         getUserById()
-//         .then(user => setUser(user))
-//     }, [])
     const { users, getUsers } = useContext(UserContext)
     const { debts, getDebts } = useContext(DebtContext)
 
@@ -34,8 +21,7 @@ export const Home = () => {
                 users?.map(user => {
                     if(user.id === currentUser) {
                         const debt = debts.find(debt => debt.userId === user.id)
-                        // console.log(debt)
-                        return <PropsAndState key={user.id} currentUser={user} debt={debt}/>
+                        return <PropsAndState key={user.id} user={user} debt={debt}/>
                     }
                 })
                 
