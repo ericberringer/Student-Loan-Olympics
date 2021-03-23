@@ -34,9 +34,16 @@ export const DebtProvider = (props) => {
         .then(getDebts)
     }
 
+    const deleteDebt = debtId => {
+        return fetch(`http://localhost:8088/debts/${debtId}`, {
+            method: "DELETE"
+        })
+            .then(getDebts)
+    }
+
     return (
         <DebtContext.Provider value={{
-            debts, getDebts, addDebt, resetDebt
+            debts, getDebts, addDebt, resetDebt, deleteDebt
         }}>
             {props.children}
         </DebtContext.Provider>
