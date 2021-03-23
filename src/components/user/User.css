@@ -1,4 +1,4 @@
-.competitorTitle {
+.userTitle {
     text-align: center;
 }
 
@@ -6,7 +6,16 @@
     display: flex;
 }
 
+.userNameTransaction {
+    display: flex;
+}
+
 .userCard {
+    border-top: dotted 1px darkslategray;
+    margin-bottom: 10px;
+}
+
+.contributorCard {
     border-top: dotted 1px darkslategray;
     margin-bottom: 10px;
 }

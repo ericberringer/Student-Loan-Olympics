@@ -7,7 +7,7 @@ export const TransactionProvider = (props) => {
     const [transactions, setTransactions] = useState([])
 
     const getTransactions = () => {
-        return fetch("http://http://localhost:8088/transactions")
+        return fetch("http://localhost:8088/transactions")
         .then(res => res.json())
         .then(setTransactions)
     }

@@ -7,11 +7,13 @@ import { DebtProvider } from "./components/debt/DebtProvider"
 import { UserProvider } from "./components/user/UserProvider"
 import { Home } from "./Home"
 import { AddDebt } from "./components/debt/AddDebt"
+import { TransactionProvider } from "./components/transactions/TransactionProvider"
 
 
 export const ApplicationViews = () => {
     return (
         <>
+    <TransactionProvider>
             <UserProvider>
                 <DebtProvider>
 
@@ -21,9 +23,11 @@ export const ApplicationViews = () => {
                     
                 </DebtProvider>
             </UserProvider>
+    </TransactionProvider> 
             
         {/* ##### Debt ##### */}
 
+    <TransactionProvider>
             <UserProvider>
                 <DebtProvider>
                     
@@ -37,9 +41,10 @@ export const ApplicationViews = () => {
 
                 </DebtProvider>
             </UserProvider>
+    </TransactionProvider>
         
         {/* ##### Users ##### */}
-
+    <TransactionProvider>
             <UserProvider>
                 <DebtProvider>
 
@@ -53,6 +58,7 @@ export const ApplicationViews = () => {
                     
                 </DebtProvider>
             </UserProvider>
+    </TransactionProvider>
             
         </>
     )
