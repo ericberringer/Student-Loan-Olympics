@@ -2,17 +2,15 @@
     text-align: center;
 }
 
-.userNameDebt {
+.card {  
     display: flex;
-}
-
-.userNameTransaction {
-    display: flex;
+    justify-content: center;
 }
 
 .userCard {
     border-top: dotted 1px darkslategray;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .contributorCard {

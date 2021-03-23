@@ -22,6 +22,7 @@ export const UserList = () => {
 
     return (
         <>
+        <section className="userList">
             <h2 className="userTitle">Competitors</h2> 
             <div className="competitors">
                 {
@@ -45,6 +46,7 @@ export const UserList = () => {
                     })
                 }
             </div> 
+        </section>
         </>
     )
 

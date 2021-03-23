@@ -12,9 +12,20 @@ export const TransactionProvider = (props) => {
         .then(setTransactions)
     }
 
+    const addTransaction = transactionObj => {
+        return fetch("http://localhost:8088/transactions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(transactionObj)
+        })
+        .then(getTransactions)
+    }
+
     return (
         <TransactionContext.Provider value={{
-            transactions, getTransactions
+            transactions, getTransactions, addTransaction
         }}>
             {props.children}
         </TransactionContext.Provider>
