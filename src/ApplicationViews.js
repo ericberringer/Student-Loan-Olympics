@@ -7,6 +7,7 @@ import { DebtProvider } from "./components/debt/DebtProvider"
 import { UserProvider } from "./components/user/UserProvider"
 import { Home } from "./Home"
 import { AddDebt } from "./components/debt/AddDebt"
+import { TransactionDetail } from "./components/transactions/TransactionDetail"
 import { TransactionProvider } from "./components/transactions/TransactionProvider"
 
 
@@ -55,6 +56,20 @@ export const ApplicationViews = () => {
                     <Route exact path="/">
                         <UserList /> 
                     </Route>
+                    
+                </DebtProvider>
+            </UserProvider>
+    </TransactionProvider>
+
+        {/* ##### Transactions ##### */}
+
+        <TransactionProvider>
+            <UserProvider>
+                <DebtProvider>
+
+                    <Route path="/transaction/detail">
+                        <TransactionDetail /> 
+                    </Route> 
                     
                 </DebtProvider>
             </UserProvider>

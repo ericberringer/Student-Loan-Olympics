@@ -8,7 +8,7 @@ export const ContributorCard = ({user, transaction})=> {
 return (
 
     <section className="userCard">
-        <div className="userNameTransaction">
+        <div className="userNameTransaction card">
             <h3 className="user__name">
             <Link to={`/users/detail/${user.id}`}>
             { user.name }

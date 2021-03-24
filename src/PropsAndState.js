@@ -20,6 +20,10 @@ export const PropsAndState = ({user, debt}) => {
             })
     }
 
+// ######## Contributor Profile ########
+
+    const ContributeButton = () => <button className="makeContributionButton" onClick={() => {history.push(`/transaction/detail`)}}>Make a Contribution</button>
+
     return (
         <>
         {
@@ -40,6 +44,9 @@ export const PropsAndState = ({user, debt}) => {
         <section className="header">
             <h3>Welcome to the Student Loan Olympics</h3>
             <h3>{user.name}</h3>
+            <div>
+                {<ContributeButton/>}
+            </div>
         </section>
         }
         </>
