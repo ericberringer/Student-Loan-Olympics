@@ -14,7 +14,7 @@ return (
             { user.name }
             </Link>
             </h3>
-            <h4>: Total Debt: ${debt.amount}</h4>
+            <h4>: Total Debt: ${debt?.amount - transaction}</h4>
         </div>
         {/* <button onClick={UserDetail}>Description</button> */}
     </section>

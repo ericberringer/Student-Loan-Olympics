@@ -2,10 +2,14 @@ import React, { useContext, useEffect, useState } from "react"
 import "./Transaction.css"
 import { useHistory } from 'react-router-dom'
 import { TransactionContext } from "./TransactionProvider"
+import { UserContext } from "../user/UserProvider"
+import { DebtContext } from "../debt/DebtProvider"
 
 export const TransactionDetail = () => {
 
     const { addTransaction } = useContext(TransactionContext)
+    const { users, getUsers } = useContext(UserContext)
+    const { debts, getDebts } = useContext(DebtContext)
 
     const history = useHistory()
     
@@ -26,7 +30,6 @@ export const TransactionDetail = () => {
     const handleAddTransaction = (event) => {
         event.preventDefault()
         addTransaction({
-            id: transaction.id,
             userId: currentUser,
             debtId: transaction.debtId,
             amount: parseInt(transaction.amount)
@@ -34,15 +37,33 @@ export const TransactionDetail = () => {
         .then(() => history.push("/"))
     }
 
+    const someFunction = (event) => {
+        const userId = parseInt(event.target.value)
+        const userDebt = debts.find(debt => debt.userId === userId)
+        const newTransaction = { ...transaction }
+        newTransaction.debtId = userDebt.id
+        setTransaction(newTransaction)
+    }
+
+    useEffect(() => {
+        getDebts()
+        .then(getUsers)
+    }, [])
+
     return (
         <form className="transactionForm">
             <h2 className="transactionFormTitle">Make a Contribution</h2>
             <fieldset>
                 <label htmlFor="competitor">Select a Competitor </label>
-                <select name="competitor" id="competitor" value={transaction.debtId}>
-                    <option value="0">Select</option>
+                <select name="competitor" onChange={someFunction}>
+                    <option value="0">Select...</option>
                 {
-                    // option tags with all competitors
+                    users.map(user => {
+                        if(user.competitor === true){
+                            // console.log(user)
+                            return <option value={user.id} id={user.id} key={user.id}>{user.name}</option>
+                        }
+                    })
                 }
                 </select>
             </fieldset>
@@ -50,6 +71,7 @@ export const TransactionDetail = () => {
                 <label htmlFor="amount">Contribution: $</label>
                 <input type="" id="amount" name="amount" required onChange={handleInputChange}></input>
             </fieldset>
+            <button className="submitTransaction" onClick={handleAddTransaction}>Submit</button>
         </form>
     )
 

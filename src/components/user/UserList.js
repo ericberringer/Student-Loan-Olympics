@@ -29,7 +29,10 @@ export const UserList = () => {
                     users.map(user => {
                         if(user.competitor === true) {
                             const debt = debts.find(debt => debt.userId === user.id)
-                            return <UserCard key={user.id} user={user} debt={debt}/>
+                            const transaction = transactions.filter(transaction => transaction.debtId === debt.id)
+                            let totalTransactions = 0
+                            transaction.map(t => totalTransactions = t.amount + totalTransactions)
+                            return <UserCard key={user.id} user={user} debt={debt} transaction={totalTransactions}/>
                         } 
                     })
                 }
