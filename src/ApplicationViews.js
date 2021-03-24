@@ -9,6 +9,7 @@ import { Home } from "./Home"
 import { AddDebt } from "./components/debt/AddDebt"
 import { TransactionDetail } from "./components/transactions/TransactionDetail"
 import { TransactionProvider } from "./components/transactions/TransactionProvider"
+import { UserDetail } from "./components/user/UserDetail"
 
 
 export const ApplicationViews = () => {
@@ -49,9 +50,9 @@ export const ApplicationViews = () => {
             <UserProvider>
                 <DebtProvider>
 
-                    {/* <Route>
-                        <UserForm />
-                    </Route> */}
+                    <Route exact path="/users/detail/:userId(\d+)">
+                        <UserDetail />
+                    </Route>
                     
                     <Route exact path="/">
                         <UserList /> 
