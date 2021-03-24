@@ -13,8 +13,13 @@ export const UserProvider = (props) => {
     }
 
     const getUserById = () => {
-        return fetch(`http://localhost:8088/users/${sessionStorage.getItem("app_user_id")}?_embed=debt`)
+        return fetch(`http://localhost:8088/users/${sessionStorage.getItem("app_user_id")}?_embed=debts`)
         .then(res => res.json())
+    }
+
+    const getSelectedUserById = (id) => {
+        return fetch(`http://localhost:8088/users/${id}?_embed=debts`)
+            .then(res => res.json())
     }
 
     const updateUser = user => {
@@ -37,7 +42,7 @@ export const UserProvider = (props) => {
 
     return (
         <UserContext.Provider value={{
-            users, getUsers, getUserById, deleteUser, updateUser
+            users, getUsers, getUserById, deleteUser, updateUser, getSelectedUserById
         }}>
             {props.children}
         </UserContext.Provider>
