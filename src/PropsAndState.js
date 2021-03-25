@@ -5,7 +5,7 @@ import "./PropsAndState.css"
 
 
 
-export const PropsAndState = ({user, debt}) => {
+export const PropsAndState = ({user, debt, transaction}) => {
 
     const { deleteDebt } = useContext(DebtContext)
     const history = useHistory()
@@ -32,7 +32,7 @@ export const PropsAndState = ({user, debt}) => {
             <section className="header">
                 <h3>Welcome to the Student Loan Olympics</h3>
                 <h3>{user.name}</h3>
-                {!debt ? <button onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3>Your Current Debt is: ${debt.amount}</h3> }
+                {!debt ? <button onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3>Your Current Debt is: ${debt.amount - transaction}</h3> }
                 {debt ? <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button> : <div></div> }
                 <div>
                 {debt ? <EditDebtButton/> : <div></div> }

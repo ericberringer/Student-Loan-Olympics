@@ -9,7 +9,7 @@ export const TransactionDetail = () => {
 
     const { addTransaction } = useContext(TransactionContext)
     const { users, getUsers } = useContext(UserContext)
-    const { debts, getDebts } = useContext(DebtContext)
+    const { debts, getDebts, editDebt } = useContext(DebtContext)
 
     const history = useHistory()
     
