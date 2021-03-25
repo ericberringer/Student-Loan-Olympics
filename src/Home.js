@@ -21,7 +21,9 @@ export const Home = () => {
                 users?.map(user => {
                     if(user.id === currentUser) {
                         const debt = debts.find(debt => debt.userId === user.id)
-                        return <PropsAndState key={user.id} user={user} debt={debt}/>
+                        let totalTransactions = 0
+                        debt?.transactions.forEach(transaction => {totalTransactions+=transaction.amount})
+                        return <PropsAndState key={user.id} user={user} debt={debt} transaction={totalTransactions}/>
                     }
                 })
                 

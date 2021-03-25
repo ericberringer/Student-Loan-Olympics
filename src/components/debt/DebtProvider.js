@@ -7,7 +7,7 @@ export const DebtProvider = (props) => {
     const [debts, setDebts] = useState([])
 
     const getDebts = () => {
-        return fetch("http://localhost:8088/debts")
+        return fetch("http://localhost:8088/debts?_embed=transactions")
         .then(res => res.json())
         .then(setDebts)
     }
@@ -34,6 +34,20 @@ export const DebtProvider = (props) => {
         .then(getDebts)
     }
 
+    const editDebt = (debtObj) => {
+        return fetch(`http://localhost:8088/debts/${debtObj.id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({
+                amount: 0
+            }),
+            headers: {
+                "Content-type": "application/json"
+            }
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+    }
+
     const deleteDebt = debtId => {
         return fetch(`http://localhost:8088/debts/${debtId}`, {
             method: "DELETE"
@@ -43,7 +57,7 @@ export const DebtProvider = (props) => {
 
     return (
         <DebtContext.Provider value={{
-            debts, getDebts, addDebt, resetDebt, deleteDebt
+            debts, getDebts, addDebt, resetDebt, deleteDebt, editDebt
         }}>
             {props.children}
         </DebtContext.Provider>
