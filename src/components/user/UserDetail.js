@@ -7,7 +7,7 @@ import "./User.css"
 export const UserDetail = () => {
 
     const { getSelectedUserById } = useContext(UserContext)
-    const { transactions } = useContext(TransactionContext)
+    const { transactions, getTransactions } = useContext(TransactionContext)
 
     const [user, setUser] = useState()
 
@@ -28,10 +28,16 @@ export const UserDetail = () => {
         .then((res) => {
             setUser(res)
         })
+        .then(getTransactions)
     }, [])
 
     if(!user) return null
 
+    let filteredTransactions = []
+    filteredTransactions = transactions.filter(t => {
+        return t.debtId === user.debts[0].id
+    }).map(obj => obj.amount)
+    console.table(filteredTransactions)
 
     return (
         <>
@@ -42,9 +48,12 @@ export const UserDetail = () => {
                 <h3>Debt Description</h3> 
                 <p>{user.debts[0].description}</p>
                 <h3>Starting Debt: ${user.debts[0].amount}</h3>
-                {
-                    console.log(user)
-                }
+                <h3>Recent Transactions:</h3>
+               {
+                   filteredTransactions.map((t,i) => {
+                       return <li key={i}>${t}</li>
+                   })
+               }
 
             </div>
             <button onClick={() => history.push("/")}>Return to Home</button>            
