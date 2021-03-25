@@ -33,31 +33,46 @@ export const UserDetail = () => {
 
     if(!user) return null
 
-    let filteredTransactions = []
-    filteredTransactions = transactions.filter(t => {
-        return t.debtId === user.debts[0].id
-    }).map(obj => obj.amount)
-    console.table(filteredTransactions)
+    const competitor = user.competitor === true
+
+        let filteredTransactions = []
+        if(competitor) {
+            filteredTransactions = transactions?.filter(t => {
+                return t.debtId === user?.debts[0].id
+            }).map(obj => obj.amount)
+        }
+
+
 
     return (
         <>
-        <section>
+        {
+        competitor ?
+            <section>
             <h3>{user.name}</h3>
             {trueCompetitor()} 
             <div>
                 <h3>Debt Description</h3> 
-                <p>{user.debts[0].description}</p>
+                <p>{user?.debts[0].description}</p>
                 <h3>Starting Debt: ${user.debts[0].amount}</h3>
                 <h3>Recent Transactions:</h3>
                {
-                   filteredTransactions.map((t,i) => {
+                   filteredTransactions?.map((t,i) => {
                        return <li key={i}>${t}</li>
-                   })
+                    })
                }
 
             </div>
             <button onClick={() => history.push("/")}>Return to Home</button>            
         </section>
+        :
+        <section>
+            <h3>{user.name}</h3>
+            {trueCompetitor()}
+            <h3>Transaction History</h3>
+            
+        </section>
+        }
         </>
     )
 
