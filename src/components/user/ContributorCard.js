@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export const ContributorCard = ({user, transaction})=> {
         
-    
+
 return (
 
     <section className="userCard">
@@ -14,7 +14,7 @@ return (
             { user.name }
             </Link>
             </h3>
-            <h4>: Total Contribution: ${transaction?.amount ? transaction.amount : 0}</h4>
+            <h4>: Total Contribution: ${transaction}</h4>
         </div>
     </section>
         )
