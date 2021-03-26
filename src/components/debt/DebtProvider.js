@@ -61,7 +61,6 @@ export const DebtProvider = (props) => {
 
     // DELETE method, deletes a debt object
     const deleteDebt = (debtId) => {
-        debugger
         return fetch(`http://localhost:8088/debts/${debtId}`, {
             method: "DELETE"
         }).then(getDebts)

@@ -45,7 +45,7 @@ export const UserDetail = () => {
         if(competitor) {
             // If a user is a competitor filter through the transactions and return the transaction whose debtId matches the id of the debt object
             filteredTransactions = transactions?.filter(t => {
-                return t.debtId === user?.debts[0].id
+                return t.debtId === user?.debts[0]?.id
             }).map(obj => obj)
         } else {
             // If the user is a contributor filter through transactios and return the transaction whose userId matches the id of the user object
@@ -66,8 +66,8 @@ export const UserDetail = () => {
             <h4>Competitor</h4> 
             <div>
                 <h3>Debt Description</h3> 
-                <p>{user?.debts[0].description}</p>
-                <h3>Starting Debt: ${user.debts[0].amount}</h3>
+                <p>{user?.debts[0]?.description}</p>
+                <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
                 <h3>Recent Transactions:</h3>
                {
                 // Map over the relevant transaction objects, return the transaction amounts and the name of the user who made the transaction
