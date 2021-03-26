@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { DebtContext } from "./components/debt/DebtProvider"
 import { authApi, userStorageKey, userStorageName } from "./components/auth/authSettings"
@@ -8,16 +8,13 @@ import "./PropsAndState.css"
 
 export const PropsAndState = ({user, debt, transaction}) => {
 
-    const { deleteDebt } = useContext(DebtContext)
+    const { deleteDebt, getDebts } = useContext(DebtContext)
     const history = useHistory()
 
     const EditDebtButton = () => <button className="editDebtButton" onClick={() => {history.push(`/debt/edit/${debt.id}`)}}>Edit Debt Amount</button> 
     
     const handleDelete = () => {
         deleteDebt(debt.id)
-            .then(() => {
-                history.push("/")
-            })
     }
 
 
@@ -44,7 +41,6 @@ export const PropsAndState = ({user, debt, transaction}) => {
                     <h3>{user.name}</h3>
                 </div>
                 {!debt ? <button onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3>Your Current Debt is: ${debt.amount - transaction}</h3> }
-                {debt ? <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button> : <div></div> }
                 <div>
                 {debt ? <EditDebtButton/> : <div></div> }
                 </div>   

@@ -8,7 +8,7 @@ import "./Debt.css"
 export const DebtForm = () => {
 
     // resetDebt is a PUT that is overwriting the current debt object
-    const { resetDebt } = useContext(DebtContext)
+    const { resetDebt, getDebtById } = useContext(DebtContext)
     const { getUsers } = useContext(UserContext)
 
     const history = useHistory()
@@ -28,6 +28,9 @@ export const DebtForm = () => {
     // Fetches all users
     useEffect(() => {
         getUsers()
+        .then(() => getDebtById(debtId))
+            .then(debt => 
+                setDebt(debt))
     }, [])
 
     // Sets value of input fields to the debt state variable
@@ -54,17 +57,19 @@ export const DebtForm = () => {
         }
     }
 
+    if(!debt) return null
+
     // Edit debt form
     return (
         <form className="debtForm">
             <h2 className="debtFormTitle">Debt Form</h2>
             <fieldset>
-                <label htmlFor="debtAmount">Debt Amount: $</label>
-                <input type="text" id="amount" name="debtAmount" required className="amountField" onChange={handleInputChange}/>
+                <label htmlFor="debtAmount">Total Debt Amount: $</label>
+                <input type="text" id="amount" name="debtAmount" required className="amountField" onChange={handleInputChange} value={debt.amount}/>
             </fieldset>
             <fieldset>
                 <label htmlFor="description">Description: </label>
-                <textarea id="description" name="description" required rows="1" cols="20" onChange={handleInputChange}></textarea>
+                <textarea id="description" name="description" required rows="2" cols="20" onChange={handleInputChange} value={debt.description}></textarea>
             </fieldset>
             {/* <fieldset>
                 <input type="checkbox" id="checkbox" name="checkbox" onChange={handleInputChange} value={debt.isComplete} defaultChecked={debt.isComplete ? true : false}></input>

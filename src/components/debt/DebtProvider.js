@@ -14,6 +14,11 @@ export const DebtProvider = (props) => {
         .then(setDebts)
     }
 
+    const getDebtById = (id) => {
+        return fetch(`http://localhost:8088/debts/${id}`)
+            .then(res => res.json())
+    }
+
     // POST method, used to add a brand new debt to the database
     const addDebt = debtObj => {
         return fetch("http://localhost:8088/debts", {
@@ -55,17 +60,17 @@ export const DebtProvider = (props) => {
     }
 
     // DELETE method, deletes a debt object
-    const deleteDebt = debtId => {
+    const deleteDebt = (debtId) => {
+        debugger
         return fetch(`http://localhost:8088/debts/${debtId}`, {
             method: "DELETE"
-        })
-            .then(getDebts)
+        }).then(getDebts)
     }
 
     // Context provider is making all included information available to other components
     return (
         <DebtContext.Provider value={{
-            debts, getDebts, addDebt, resetDebt, deleteDebt, editDebt
+            debts, getDebts, addDebt, resetDebt, deleteDebt, editDebt, getDebtById
         }}>
             {props.children}
         </DebtContext.Provider>

@@ -14,7 +14,7 @@ return (
             { user.name }
             </Link>
             </h3>
-            <h4>: Total Debt: ${debt?.amount - transaction}</h4>
+            <h4>: Total Debt: ${debt ? debt?.amount - transaction : 0}</h4>
         </div>
     </section>
         )

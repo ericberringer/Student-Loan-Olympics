@@ -20,6 +20,10 @@ export const UserList = () => {
         .then(getUsers)
     }, [])
 
+    useEffect(() => {
+        getDebts()
+    }, [])
+
     return (
         <>
         <section className="userList">

@@ -10,7 +10,7 @@ export const UserDetail = () => {
 
     const { getSelectedUserById } = useContext(UserContext)
     const { transactions, getTransactions } = useContext(TransactionContext)
-    const { debts, getDebts } = useContext(DebtContext)
+    const { debts, getDebts, deleteDebt } = useContext(DebtContext)
 
     const [user, setUser] = useState()
 
@@ -26,6 +26,15 @@ export const UserDetail = () => {
         .then(getTransactions)
         .then(getDebts)
     }, [])
+    
+
+    const handleDelete = () => {
+        const userDebt = debts.find(debt => debt.userId === parseInt(userId))
+        deleteDebt(userDebt.id)
+            .then(() => {
+                history.push("/")
+            })
+    }
 
     // Loading state
     if(!user) return null
@@ -69,6 +78,7 @@ export const UserDetail = () => {
                     })
                }
 
+            <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button>
             </div>
             <button className="homeButton" onClick={() => history.push("/")}>Return to Home</button>            
         </section>
