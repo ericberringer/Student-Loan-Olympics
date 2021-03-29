@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react"
-import "./Debt.css"
 import { useHistory } from 'react-router-dom'
-import { DebtContext, DebtProvider } from "./DebtProvider"
+import { DebtContext } from "./DebtProvider"
+import "./Debt.css"
+// This component is in charge of adding a logged in user's 
+// new debt to the database.
 
 export const AddDebt = () => {
     
@@ -11,6 +13,7 @@ export const AddDebt = () => {
 
     let registeredUser = parseInt(sessionStorage.getItem("app_user_id"))
     
+    // Setting the state of the debt object
     const [debt, setDebt] = useState({
         userId: registeredUser,
         amount: 0,
@@ -18,12 +21,14 @@ export const AddDebt = () => {
         isComplete: false
     })
 
+    // Sets the value of the input fields into the debt state variable
     const handleInputChange = (event) => {
         const newDebt = { ...debt }
         newDebt[event.target.id] = event.target.value
         setDebt(newDebt)
     }
 
+    // Adds the debt object to the database
     const handleAddDebt = (event) => {
         event.preventDefault()
         addDebt({
@@ -35,7 +40,7 @@ export const AddDebt = () => {
         })
         .then(() => history.push("/"))
     }
-    
+    // Add new debt form
     return (
         <form className="debtForm">
             <h2 className="debtFormTitle">Debt Form</h2>
