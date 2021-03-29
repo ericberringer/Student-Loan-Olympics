@@ -18,6 +18,8 @@ export const UserDetail = () => {
     const {userId} = useParams()
     
     const history = useHistory()
+    
+    let currentUser = parseInt(sessionStorage.getItem("app_user_id"))
 
     useEffect(() => {
         getSelectedUserById(userId)
@@ -31,11 +33,13 @@ export const UserDetail = () => {
     
 
     const handleDelete = () => {
-        const userDebt = debts.find(debt => debt.userId === parseInt(userId))
-        deleteDebt(userDebt.id)
+        if(window.confirm("Are you sure you want to delete this debt?")) {
+            const userDebt = debts.find(debt => debt.userId === parseInt(userId))
+            deleteDebt(userDebt.id)
             .then(() => {
                 history.push("/")
             })
+        }
     }
 
     // Loading state
@@ -80,7 +84,7 @@ export const UserDetail = () => {
                     })
                }
 
-            <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button>
+            {currentUser === parseInt(userId) ? <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button> : <div></div>}
             </div>
             <button className="homeButton" onClick={() => history.push("/")}>Return to Home</button>            
         </section>
