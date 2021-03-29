@@ -62,9 +62,11 @@ export const UserDetail = () => {
                             // ##### Competitor Detail #####
         competitor ?
             <section className="detailSection">
-            <h3>{user.name}</h3>
-            <h4>Competitor</h4> 
-            <div>
+            <div className="detailHeader">
+                <h3>{user.name}</h3>
+                <h4>Competitor</h4> 
+            </div>    
+            <div className="detailDiv">
                 <h3>Debt Description</h3> 
                 <p>{user?.debts[0]?.description}</p>
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
@@ -86,9 +88,11 @@ export const UserDetail = () => {
                             // ##### Contributor Detail #####
 
         <section className="detailSection">
-            <h3>{user.name}</h3>
-            <h4>Contributor</h4>
-            <div>
+            <div className="detailHeader">
+                <h3>{user.name}</h3>
+                <h4>Contributor</h4>
+            </div>
+            <div className="detailDiv">
                 <h3>Transaction History</h3>
                 {
                 // Map over the relevant transactions and find the 
