@@ -31,7 +31,7 @@ export const UserDetail = () => {
         .then(getTransactions)
     }, [])
     
-
+    // finds the debt associated with the selected user and deletes it
     const handleDelete = () => {
         if(window.confirm("Are you sure you want to delete this debt?")) {
             const userDebt = debts.find(debt => debt.userId === parseInt(userId))
@@ -78,9 +78,10 @@ export const UserDetail = () => {
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
                 <h3>Recent Transactions:</h3>
                {
+                // iterate over relevant transactions and find the user whose id matches the userId of the transaction made
                    filteredTransactions.map((t,i) => {
                     let transactionUser = users.find((user) => user.id === t.userId)
-                       return <li key={i}>${t.amount} {transactionUser.name}</li>
+                       return <li className="amountList" key={i}>${t.amount} {transactionUser.name}</li>
                     })
                }
 
@@ -99,11 +100,11 @@ export const UserDetail = () => {
             <div className="detailDiv">
                 <h3>Transaction History</h3>
                 {
-                // Map over the relevant transactions and find the debt whose id matches the userId of the filtered debts.
+                // iterate over the relevant transactions and find the debt whose id matches the userId of the filtered transactions.
                 // The name of the user on the debt can be accessed since the user object is embedded in the debt fetch.
                     filteredTransactions.map((t, i) => {
                        let debtUser = debts.find((debt) => debt.id === t.debtId)
-                        return <li key={i}>${t.amount} {debtUser?.user.name}</li>
+                        return <li className="amountList" key={i}>${t.amount} {debtUser?.user.name}</li>
                     })     
     
                 }
