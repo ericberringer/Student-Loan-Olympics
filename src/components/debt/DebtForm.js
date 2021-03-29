@@ -47,11 +47,11 @@ export const DebtForm = () => {
             window.alert("Amount and description fields must be complete.")
         } else {
             resetDebt({
-                id: debtId,
                 userId: currentUser,
                 amount: parseInt(debt.amount),
                 description: debt.description,
-                isComplete: debt.isComplete
+                isComplete: debt.isComplete,
+                id: debtId
             })
             .then(() => history.push("/"))
         }
