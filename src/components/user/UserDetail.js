@@ -8,9 +8,10 @@ import "./User.css"
 // In charge of handling the user's detail info when a user is clicked on the home page.
 export const UserDetail = () => {
 
-    const { getSelectedUserById } = useContext(UserContext)
+    const { users, getUsers, getSelectedUserById } = useContext(UserContext)
     const { transactions, getTransactions } = useContext(TransactionContext)
     const { debts, getDebts, deleteDebt } = useContext(DebtContext)
+    // console.log(transactions)
 
     const [user, setUser] = useState()
 
@@ -23,8 +24,9 @@ export const UserDetail = () => {
         .then((res) => {
             setUser(res)
         })
-        .then(getTransactions)
         .then(getDebts)
+        .then(getUsers)
+        .then(getTransactions)
     }, [])
     
 
@@ -72,11 +74,9 @@ export const UserDetail = () => {
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
                 <h3>Recent Transactions:</h3>
                {
-                // Map over the relevant transaction objects, return the transaction amounts and the name of the user who made the transaction
-                // by matching the debtId of the transactions to the debtId of the filteredTransactions object in order to access the name of the contributor
                    filteredTransactions.map((t,i) => {
-                    let transactionUser = transactions.find((transaction) => transaction.debtId === t.debtId)
-                       return <li key={i}>${t.amount} {transactionUser.user.name}</li>
+                    let transactionUser = users.find((user) => user.id === t.userId)
+                       return <li key={i}>${t.amount} {transactionUser.name}</li>
                     })
                }
 
