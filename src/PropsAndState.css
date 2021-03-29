@@ -5,7 +5,15 @@
 }
 
 .editDebtButton {
-    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.makeContributionButton {
+    margin-right: 5px;
+}
+
+.logoutButton {
+    margin-left: 5px;
 }
 
 .editDebtButton:hover {

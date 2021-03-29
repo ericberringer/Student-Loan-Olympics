@@ -95,7 +95,8 @@ export const UserDetail = () => {
             <div className="detailDiv">
                 <h3>Transaction History</h3>
                 {
-                // Map over the relevant transactions and find the 
+                // Map over the relevant transactions and find the debt whose id matches the userId of the filtered debts.
+                // The name of the user on the debt can be accessed since the user object is embedded in the debt fetch.
                     filteredTransactions.map((t, i) => {
                        let debtUser = debts.find((debt) => debt.id === t.debtId)
                         return <li key={i}>${t.amount} {debtUser.user.name}</li>

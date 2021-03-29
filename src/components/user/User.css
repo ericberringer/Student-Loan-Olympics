@@ -15,6 +15,10 @@
     border-radius: 10px;
 }
 
+.userList {
+    margin-bottom: 30px;
+}
+
 .contributorCard {
     border-top: dotted 1px darkslategray;
     margin-bottom: 10px;
