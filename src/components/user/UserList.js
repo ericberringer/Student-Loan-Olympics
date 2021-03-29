@@ -32,7 +32,7 @@ export const UserList = () => {
                             const debt = debts.find(debt => debt.userId === user.id)
                             // filter out the transactions whose debtId matches the id of the debt objects
                             const transaction = transactions?.filter(transaction => transaction.debtId === debt?.id)
-                            // totalTransactions will store the total amounts put towards a particular debt
+                            // totalTransactions will store the total amounts put toward a particular debt
                             let totalTransactions = 0
                             // map over the relevant transactions and add up the amount of each transaction
                             transaction.map(t => totalTransactions = t.amount + totalTransactions)
@@ -46,9 +46,12 @@ export const UserList = () => {
             <h2 className="userTitle">Contributors</h2> 
             <div className="contributors">
                 {
+                    // iterate over all users
                     users.map(user => {
+                        // if the user is not a competitor
                         if(user.competitor === false) {
                             let totalTransactions = 0
+                            // filter out the transactions 
                             const transaction = transactions.filter(t => t.userId === user.id)
                             transaction.map(t => totalTransactions = t.amount + totalTransactions)
                             return <ContributorCard key={user.id} user={user} transaction={totalTransactions} />
