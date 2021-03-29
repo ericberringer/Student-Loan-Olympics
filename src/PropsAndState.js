@@ -1,32 +1,26 @@
 import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { DebtContext } from "./components/debt/DebtProvider"
-import { authApi, userStorageKey, userStorageName } from "./components/auth/authSettings"
+import { userStorageKey } from "./components/auth/authSettings"
 import "./PropsAndState.css"
 
 
 
 export const PropsAndState = ({user, debt, transaction}) => {
 
-    const { deleteDebt, getDebts } = useContext(DebtContext)
     const history = useHistory()
 
-    const EditDebtButton = () => <button className="editDebtButton" onClick={() => {history.push(`/debt/edit/${debt.id}`)}}>Edit Debt Amount</button> 
     
-    const handleDelete = () => {
-        deleteDebt(debt.id)
-    }
-
-
+    
     const LogOut = () => {
         if (window.confirm("Logout?")) {
-          sessionStorage.setItem(userStorageKey, "")
-          history.push("/login")
+            sessionStorage.setItem(userStorageKey, "")
+            history.push("/login")
         }
-      }
-
-      
-      const ContributeButton = () => <button className="makeContributionButton" onClick={() => {history.push(`/transaction/detail`)}}>Make a Contribution</button>
+    }
+    
+    
+    const EditDebtButton = () => <button className="editDebtButton" onClick={() => {history.push(`/debt/edit/${debt.id}`)}}>Edit Debt Amount</button> 
+    const ContributeButton = () => <button className="makeContributionButton" onClick={() => {history.push(`/transaction/detail`)}}>Make a Contribution</button>
       
       return (
           <>
@@ -36,13 +30,13 @@ export const PropsAndState = ({user, debt, transaction}) => {
             
             <section className="header">
                 <div>
-                    <h3>Welcome to the Student Loan Olympics</h3>
-                    <button className="logoutButton" onClick={LogOut}>Log Out</button>
+                    <h1>Welcome to the Student Loan Olympics</h1>
                     <h3>{user.name}</h3>
                 </div>
-                {!debt ? <button onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3>Your Current Debt is: ${debt.amount - transaction}</h3> }
-                <div>
-                {debt ? <EditDebtButton/> : <div></div> }
+                    {!debt ? <button onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3>Your Current Debt is: ${debt.amount - transaction}</h3> }
+                <div className="headerButtonDiv">
+                    {debt ? <EditDebtButton/> : <div></div> }
+                    <button className="logoutButton" onClick={LogOut}>Log Out</button>
                 </div>   
             </section>
         
@@ -51,12 +45,12 @@ export const PropsAndState = ({user, debt, transaction}) => {
         
         <section className="header">
             <div>
-                <h3>Welcome to the Student Loan Olympics</h3>
-                <button className="logoutButton" onClick={LogOut}>Log Out</button>
+                <h1>Welcome to the Student Loan Olympics</h1>
                 <h3>{user.name}</h3>
             </div>
-            <div>
+            <div className="headerButtonDiv">
                 {<ContributeButton/>}
+                <button className="logoutButton" onClick={LogOut}>Log Out</button>
             </div>
         </section>
         }

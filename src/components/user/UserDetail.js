@@ -48,7 +48,7 @@ export const UserDetail = () => {
                 return t.debtId === user?.debts[0]?.id
             }).map(obj => obj)
         } else {
-            // If the user is a contributor filter through transactios and return the transaction whose userId matches the id of the user object
+            // If the user is a contributor filter through transactions and return the transaction whose userId matches the id of the user object
             filteredTransactions = transactions.filter(t => {
                 return t.userId === user.id
             }).map(obj => obj)
@@ -95,10 +95,11 @@ export const UserDetail = () => {
             <div className="detailDiv">
                 <h3>Transaction History</h3>
                 {
-                // Map over the relevant transactions and find the 
+                // Map over the relevant transactions and find the debt whose id matches the userId of the filtered debts.
+                // The name of the user on the debt can be accessed since the user object is embedded in the debt fetch.
                     filteredTransactions.map((t, i) => {
                        let debtUser = debts.find((debt) => debt.id === t.debtId)
-                        return <li key={i}>${t.amount} {debtUser.user.name}</li>
+                        return <li key={i}>${t.amount} {debtUser?.user.name}</li>
                     })     
     
                 }
