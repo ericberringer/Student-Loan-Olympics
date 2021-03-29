@@ -12,8 +12,6 @@ export const UserList = () => {
     const { debts, getDebts } = useContext(DebtContext)
     const { transactions, getTransactions } = useContext(TransactionContext)
 
-    let currentUser = parseInt(sessionStorage.getItem("app_user_id"))
-
     useEffect(() => {
         getDebts()
         .then(getTransactions)
