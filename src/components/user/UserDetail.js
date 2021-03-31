@@ -43,9 +43,6 @@ export const UserDetail = () => {
         }
     }
 
-    // Loading state
-    // if(!user) return null
-
     const competitor = user?.competitor === true
 
         let filteredTransactions = []
@@ -59,6 +56,31 @@ export const UserDetail = () => {
             filteredTransactions = transactions.filter(t => {
                 return t.userId === user.id
             })
+        }
+
+        const ProgressBar = () => {
+            // console.log(user.debts[0].amount)
+            const userTotalDebt = user.debts[0].amount
+            const amounts = filteredTransactions.map(t => t.amount)
+            let sum = 0
+            for(var i = 0; i < amounts.length; i++) {
+                sum += amounts[i]
+            }
+            const value = sum/userTotalDebt * 100
+            const max = userTotalDebt
+            const fixedNumber = value.toFixed(2)
+            const progress = userTotalDebt - sum
+            return (
+                <div className="progressBarDiv">
+                    <label htmlFor="debtProgress">Campaign Progress: </label>
+                    <h3>{fixedNumber}%</h3>
+                    <div>
+                    {0}
+                    <progress id="debtProgress" value={progress} max={max}/>
+                    {userTotalDebt}
+                    </div>
+                </div>
+            )
         }
 
 
@@ -77,6 +99,7 @@ export const UserDetail = () => {
                 <h3>Debt Description</h3> 
                 <p>{user?.debts[0]?.description}</p>
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
+                {ProgressBar()}
                 <h3>Recent Transactions:</h3>
                {
                 // iterate over relevant transactions and find the user whose id matches the userId of the transaction made
