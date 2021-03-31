@@ -19,3 +19,19 @@
 .editDebtButton:hover {
     background-color: rgb(115, 121, 194);
 }
+
+.progressBarDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.progressBar {
+    display: flex;
+}
+
+#debtProgress {
+    margin: 0 10px;
+    padding: 10px 20px;
+}
