@@ -34,6 +34,8 @@ return (
             </h3>
             <h4>: Total Contribution: ${transaction}</h4>
         </div>
+
+
         {
             user.name === "Scott Silver" ?
             <form>
@@ -51,6 +53,7 @@ return (
         :
         null
         }
+        
 
     </section>
         )

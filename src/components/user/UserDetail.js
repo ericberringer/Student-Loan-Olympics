@@ -83,6 +83,15 @@ export const UserDetail = () => {
             )
         }
 
+        const TotalContributions = () => {
+            const amounts = filteredTransactions.map(t => t.amount)
+            let totalCont = 0
+            for(var i = 0; i < amounts.length; i++){
+                totalCont += amounts[i]
+            }
+            return <h4>Total Contributions: ${totalCont}</h4>
+        }
+
 
 
     return (
@@ -118,8 +127,9 @@ export const UserDetail = () => {
 
         <section className="detailSection">
             <div className="detailHeader">
-                <h3>{user.name}</h3>
+                <h3>{user.name}</h3>            
                 <h4>Contributor</h4>
+                {TotalContributions()}
             </div>
             <div className="detailDiv">
                 <h3>Transaction History</h3>
