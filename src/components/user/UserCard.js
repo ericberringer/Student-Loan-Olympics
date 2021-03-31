@@ -7,8 +7,7 @@ export const UserCard = ({user, debt, transaction})=> {
         
     
 return (
-
-    <section className="userCard">
+        <section className="userCard">
         <div className="userNameDebt card">
             <h3 className="user__name">
                 {/* Linking to a user's detail, passing the url the selected user's

@@ -18,6 +18,7 @@ export const AddDebt = () => {
         userId: registeredUser,
         amount: 0,
         description: "",
+        dueDate: 0,
         isComplete: false
     })
 
