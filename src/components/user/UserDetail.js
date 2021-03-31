@@ -13,7 +13,7 @@ export const UserDetail = () => {
     const { debts, getDebts, deleteDebt } = useContext(DebtContext)
     // console.log(transactions)
 
-    const [user, setUser] = useState()
+    const [user, setUser] = useState({})
 
     const {userId} = useParams()
     
@@ -21,6 +21,7 @@ export const UserDetail = () => {
     
     let currentUser = parseInt(sessionStorage.getItem("app_user_id"))
 
+    // useEffect runs once after initial render
     useEffect(() => {
         getSelectedUserById(userId)
         .then((res) => {
@@ -43,21 +44,21 @@ export const UserDetail = () => {
     }
 
     // Loading state
-    if(!user) return null
+    // if(!user) return null
 
-    const competitor = user.competitor === true
+    const competitor = user?.competitor === true
 
         let filteredTransactions = []
         if(competitor) {
             // If a user is a competitor filter through the transactions and return the transaction whose debtId matches the id of the debt object
             filteredTransactions = transactions?.filter(t => {
                 return t.debtId === user?.debts[0]?.id
-            }).map(obj => obj)
+            })
         } else {
             // If the user is a contributor filter through transactions and return the transaction whose userId matches the id of the user object
             filteredTransactions = transactions.filter(t => {
                 return t.userId === user.id
-            }).map(obj => obj)
+            })
         }
 
 
