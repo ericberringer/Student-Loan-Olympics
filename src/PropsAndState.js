@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { userStorageKey } from "./components/auth/authSettings"
 import "./PropsAndState.css"
@@ -6,11 +6,50 @@ import "./PropsAndState.css"
 
 // handles current user's name, debt amount, edit, and log out buttons
 export const PropsAndState = ({user, debt, transaction}) => {
-
     const history = useHistory()
 
+    // ########## Youtube Tutorial ##########
+    // const [fileInputState, setFileInputState] = useState("")
+    // const [selectedFile, setSelectedFile] = useState("")
+    // const [previewSource, setPreviewSource] = useState("")
+    
+
+    // const handleFileInputChange = (e) => {
+    //     const file = e.target.files[0]
+    //     previewFile(file)
+    // }
+
+    // const previewFile = (file) => {
+    //     const reader = new FileReader()
+    //     reader.readAsDataURL(file)
+    //     reader.onloadend = () => {
+    //         setPreviewSource(reader.result)
+    //     }
+    // }    
+
+    // const handleSubmitFile = (e) => {
+    //     console.log("submitting")
+    //     e.preventDefault()
+    //     if(!previewSource) return
+    //     uploadImage(previewSource)
+    // }
+
+    // const uploadImage = async (base64EncodedImage) => {
+    //     console.log(base64EncodedImage)
+    //     try {
+    //         await fetch('/api/upload', {
+    //             method: 'POST',
+    //             body: JSON.stringify({data: base64EncodedImage}),
+    //             headers: {'Content-type': 'application/json'}
+    //         })
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
+    // ####################################################
     
     // presents a confirmation window and logs out user when 'ok' is selected. This sets the id in session storage to an empty string 
+    
     const LogOut = () => {
         if (window.confirm("Logout?")) {
             sessionStorage.setItem(userStorageKey, "")
@@ -30,6 +69,22 @@ export const PropsAndState = ({user, debt, transaction}) => {
             user.competitor ?
             // if the user is a competitor
             <section className="header">
+               
+                {/* Youtube Tutorial */}
+                    {/* <div>
+                    <form onSubmit={handleSubmitFile}>
+                        <fieldset>
+                            <input type="file" name="image" onChange={handleFileInputChange} value={fileInputState} className="imageUpload"></input>
+                            <button type="submit" className="imageSubmitButton">Submit</button>
+                        </fieldset>
+                        {previewSource && (
+                            <img src={previewSource} alt="chosen" style={{height: "100px"}}/>
+                        )}
+                    </form>
+                </div> */}
+                
+                {/* Tutorial End */}
+                
                 <div>
                     <h1>Welcome to the Student Loan Olympics</h1>
                     {/* print their name */}
