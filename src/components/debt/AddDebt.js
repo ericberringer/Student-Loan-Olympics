@@ -26,7 +26,7 @@ export const AddDebt = () => {
     const handleInputChange = (event) => {
         const newDebt = { ...debt }
         newDebt[event.target.id] = event.target.value
-        setDebt(newDebt)
+            setDebt(newDebt)
     }
 
     // Adds the debt object to the database

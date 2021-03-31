@@ -36,7 +36,7 @@ export const UserList = () => {
                             let totalTransactions = 0
                             // map over the relevant transactions and add up the amount of each transaction
                             transaction.map(t => totalTransactions = t.amount + totalTransactions)
-                            // passing UserCard a user, their debt, and the total transaction made towards that individual competitor's debt
+                            // passing UserCard a user, their debt, and the total transaction made towards that individual competitor's debt                            
                             if(debt !== undefined) {
                                 return <UserCard key={user.id} user={user} debt={debt} transaction={totalTransactions}/>
                             }
@@ -55,7 +55,6 @@ export const UserList = () => {
                             let totalTransactions = 0
                             // filter out the transactions 
                             const transaction = transactions.filter(t => t.userId === user.id)
-                            console.log(transaction[0])
                             transaction.map(t => totalTransactions = t.amount + totalTransactions)
                             if(totalTransactions !== 0) {
                                 return <ContributorCard key={user.id} user={user} transaction={totalTransactions} />
