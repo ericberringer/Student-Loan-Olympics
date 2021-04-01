@@ -18,7 +18,7 @@ return (
             </h3>
             {/* if the user has a debt then subtract the total transactions
             made towards a user's debt from their total debt amount. */}
-            <h4>: Total Debt: ${debt ? debt?.amount - transaction : 0}</h4>
+            <h4>Total Debt: ${debt ? debt?.amount - transaction : 0}</h4>
         </div>
     </section>
         )

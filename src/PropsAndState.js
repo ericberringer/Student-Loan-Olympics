@@ -62,7 +62,7 @@ export const PropsAndState = ({user, debt, transaction}) => {
     const EditDebtButton = () => <button className="editDebtButton button" onClick={() => {history.push(`/debt/edit/${debt.id}`)}}>Edit Debt Amount</button> 
     // Takes a contributor to a contribution form
     const ContributeButton = () => <button className="contributorButton button" onClick={() => {history.push(`/transaction/detail`)}}>Make a Contribution</button>
-
+    
     const ProgressBar = () => {
         const value = transaction/debt.amount * 100
         const max = debt.amount
@@ -74,13 +74,13 @@ export const PropsAndState = ({user, debt, transaction}) => {
                 <h3>{fixedNumber}%</h3>
                 <div>
                 {0}
-                <progress id="debtProgress" value={progress} max={max}/>
+                    <progress id="debtProgress" value={progress} max={max}/>
                 {debt.amount}
                 </div>
             </div>
         )
     }
-      
+    
       return (
           <>
             <div className="logoDiv">

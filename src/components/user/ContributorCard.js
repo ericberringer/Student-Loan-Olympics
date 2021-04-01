@@ -32,7 +32,7 @@ return (
             { user.name }
             </Link>
             </h3>
-            <h4>: Total Contribution: ${transaction}</h4>
+            <h4>Total Contribution: ${transaction}</h4>
         </div>
 
 
