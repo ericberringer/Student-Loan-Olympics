@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useHistory } from "react-router-dom"
 import { userStorageKey } from "./components/auth/authSettings"
 import "./PropsAndState.css"
@@ -6,6 +6,7 @@ import "./PropsAndState.css"
 
 // handles current user's name, debt amount, edit, and log out buttons
 export const PropsAndState = ({user, debt, transaction}) => {
+    
     const history = useHistory()
 
     // ########## Youtube Tutorial ##########
@@ -58,9 +59,9 @@ export const PropsAndState = ({user, debt, transaction}) => {
     }
     
     // takes the logged in user to a form to edit their total debt amount. Sends the users id in the url
-    const EditDebtButton = () => <button className="editDebtButton" onClick={() => {history.push(`/debt/edit/${debt.id}`)}}>Edit Debt Amount</button> 
+    const EditDebtButton = () => <button className="editDebtButton button" onClick={() => {history.push(`/debt/edit/${debt.id}`)}}>Edit Debt Amount</button> 
     // Takes a contributor to a contribution form
-    const ContributeButton = () => <button className="makeContributionButton" onClick={() => {history.push(`/transaction/detail`)}}>Make a Contribution</button>
+    const ContributeButton = () => <button className="contributorButton button" onClick={() => {history.push(`/transaction/detail`)}}>Make a Contribution</button>
 
     const ProgressBar = () => {
         const value = transaction/debt.amount * 100
@@ -82,6 +83,9 @@ export const PropsAndState = ({user, debt, transaction}) => {
       
       return (
           <>
+            <div className="logoDiv">
+                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="460"/>
+            </div>
         {
         // ######## Competitor Profile ########
             user.competitor ?
@@ -103,34 +107,41 @@ export const PropsAndState = ({user, debt, transaction}) => {
                 
                 {/* Tutorial End */}
                 
-                <div>
-                    <h1>Welcome to the Student Loan Olympics</h1>
+                <div className="nameDiv">
                     {/* print their name */}
-                    <h3>{user.name}</h3>
-                </div>
+                    <h2>Welcome {user.name}!</h2>
                 {/* if the user does not have a debt amount yet, print a button that takes the user to a create a debt form
                 if the user does have a debt print their debt amount and subtract each new transaction from that amount */}
-                    {!debt ? <button onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3>Your Current Debt is: ${debt.amount - transaction}</h3> }
-                    {debt ? <h3>Starting Debt: ${debt.amount}</h3> : <div></div>}
-                    {debt ? ProgressBar() : null}
+                    {debt ? <h3 className="debtText">Starting Debt: ${debt.amount}</h3> : <div></div>}
+                    {!debt ? <button className="button" onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3 className="debtText">Your Current Debt is: ${debt.amount - transaction}</h3> }
+                </div>
                 <div className="headerButtonDiv">
+                    {debt ? ProgressBar() : null}
                     {/* if the user has a debt print an edit debt button */}
                     {debt ? <EditDebtButton/> : <div></div> }
-                    <button className="logoutButton" onClick={LogOut}>Log Out</button>
+                    {/* Logout Buttons */}
+                    {!debt ?  
+                    <div className="noDebtLogoutButtonDiv">
+                        <button className="competitorLogout button" onClick={LogOut}>Log Out</button>
+                    </div>
+                    :
+                    <button className="competitorLogout button" onClick={LogOut}>Log Out</button>
+                    }
                 </div>   
             </section>
         
         : 
         // ######## Contributor Profile ########
+        
         // if the user is a contributor print their name and a contribute button
         <section className="header">
             <div>
-                <h1>Welcome to the Student Loan Olympics</h1>
-                <h3>{user.name}</h3>
+                <h2>Welcome {user.name}!</h2>
             </div>
             <div className="headerButtonDiv">
+                <h3>Feeling Generous?</h3>
                 {<ContributeButton/>}
-                <button className="logoutButton" onClick={LogOut}>Log Out</button>
+                <button className="contributorButton contributorLogout button" onClick={LogOut}>Log Out</button>
             </div>
         </section>
         }

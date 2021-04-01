@@ -120,7 +120,7 @@ export const UserDetail = () => {
 
             {currentUser === parseInt(userId) ? <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button> : <div></div>}
             </div>
-            <button className="homeButton" onClick={() => history.push("/")}>Return to Home</button>            
+            <button className="homeButton button" onClick={() => history.push("/")}>Return to Home</button>            
         </section>
         :
                             // ##### Contributor Detail #####
@@ -143,7 +143,7 @@ export const UserDetail = () => {
     
                 }
             </div>
-            <button className="homeButton" onClick={() => history.push("/")}>Return to Home</button>            
+            <button className="homeButton button" onClick={() => history.push("/")}>Return to Home</button>            
         </section>
         }
         </>

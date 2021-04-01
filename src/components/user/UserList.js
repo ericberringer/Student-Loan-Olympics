@@ -22,7 +22,7 @@ export const UserList = () => {
         <>
         <section className="userList">
             <h2 className="userTitle">Competitors</h2> 
-            <div className="competitors">
+            <div className="competitors userDiv">
                 {
                     // iterate over the array of user objects
                     users.map(user => {
@@ -46,7 +46,7 @@ export const UserList = () => {
             </div>
 
             <h2 className="userTitle">Contributors</h2> 
-            <div className="contributors">
+            <div className="contributors userDiv">
                 {
                     // iterate over all users
                     users.map(user => {
