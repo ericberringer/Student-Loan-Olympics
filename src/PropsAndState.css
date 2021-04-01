@@ -1,19 +1,54 @@
 .header {
+    display: flex;
+    justify-content: space-between;
+    /* margin: 0 35px; */
     text-align: center;
-    border-bottom: solid 1px darkslategray;
-    padding-bottom: 15px;
+    padding: 0 30px 10px 30px;
+}
+
+.debtText {
+    text-align: left;
+}
+
+.logoDiv {
+    text-align: center;
+    padding-bottom: 12px;
+}
+
+.logo {
+    margin-top: 20px;
 }
 
 .editDebtButton {
     margin-right: 5px;
 }
 
+.noDebtLogoutButtonDiv {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
 .makeContributionButton {
     margin-right: 5px;
 }
 
+.button {
+    border-radius: 3px;
+    background-color: snow;
+}
+
+.button:hover {
+    background-color: rgb(144, 164, 184);
+}
+
 .logoutButton {
     margin-left: 5px;
+}
+
+.contributorButton {
+    margin-bottom: 10px;
 }
 
 .editDebtButton:hover {

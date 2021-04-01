@@ -4,24 +4,35 @@
 
 .card {  
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 .userCard {
-    border: dotted 1px darkslategray;
+    background-color: rgba(255, 255, 255, 0.289);
+    border-top: solid 2px darkslategray;
+    border-bottom: solid 2px darkslategray;
+    border-right: solid 1px gray;
+    border-left: solid 1px gray;
     text-align: center;
-    margin: 0 260px;
-    padding: 10px 0;
+    margin: 20px 20px;
+    padding: 50px 20px;
     border-radius: 10px;
+}
+
+.userCard:hover {
+    background-color: rgb(178, 188, 196);
 }
 
 .userList {
     margin-bottom: 30px;
+    border-top: 1px solid black;
 }
 
-.contributorCard {
-    border-top: dotted 1px darkslategray;
-    margin-bottom: 10px;
+.userDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .detailSection {
