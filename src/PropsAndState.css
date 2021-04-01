@@ -1,9 +1,13 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     /* margin: 0 35px; */
     text-align: center;
     padding: 0 30px 10px 30px;
+    background-color: rgba(0, 0, 0, 0.714);
+    color: white;
 }
 
 .debtText {
@@ -16,7 +20,7 @@
 }
 
 .logo {
-    margin-top: 20px;
+    margin-top: 28px;
 }
 
 .editDebtButton {

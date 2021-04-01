@@ -83,9 +83,6 @@ export const PropsAndState = ({user, debt, transaction}) => {
     
       return (
           <>
-            <div className="logoDiv">
-                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="460"/>
-            </div>
         {
         // ######## Competitor Profile ########
             user.competitor ?
@@ -106,7 +103,9 @@ export const PropsAndState = ({user, debt, transaction}) => {
                 </div> */}
                 
                 {/* Tutorial End */}
-                
+                <div className="logoDiv">
+                    <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="400"/>
+                </div>
                 <div className="nameDiv">
                     {/* print their name */}
                     <h2>Welcome {user.name}!</h2>
@@ -135,6 +134,9 @@ export const PropsAndState = ({user, debt, transaction}) => {
         
         // if the user is a contributor print their name and a contribute button
         <section className="header">
+            <div className="logoDiv">
+                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="400"/>
+            </div>
             <div>
                 <h2>Welcome {user.name}!</h2>
             </div>
