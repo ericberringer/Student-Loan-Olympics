@@ -66,12 +66,12 @@ export const PropsAndState = ({user, debt, transaction}) => {
     const ProgressBar = () => {
         const value = transaction/debt.amount * 100
         const max = debt.amount
-        const fixedNumber = value.toFixed(2)
+        const percentProgress = value.toFixed(2)
         const progress = debt.amount - transaction
         return (
             <div className="progressBarDiv">
                 <label htmlFor="debtProgress">Campaign Progress: </label>
-                <h3>{fixedNumber}%</h3>
+                <h3>{percentProgress}%</h3>
                 <div>
                 {0}
                     <progress id="debtProgress" value={progress} max={max}/>
@@ -112,7 +112,7 @@ export const PropsAndState = ({user, debt, transaction}) => {
                 {/* if the user does not have a debt amount yet, print a button that takes the user to a create a debt form
                 if the user does have a debt print their debt amount and subtract each new transaction from that amount */}
                     {debt ? <h3 className="debtText">Starting Debt: ${debt.amount}</h3> : <div></div>}
-                    {!debt ? <button className="button" onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3 className="debtText">Your Current Debt is: ${debt.amount - transaction}</h3> }
+                    {!debt ? <button className="button addDebtButton" onClick={() => history.push(`/debt/create`)}>Create a Debt</button> : <h3 className="debtText">Your Current Debt is: ${debt.amount - transaction}</h3> }
                 </div>
                 <div className="headerButtonDiv">
                     {debt ? ProgressBar() : null}

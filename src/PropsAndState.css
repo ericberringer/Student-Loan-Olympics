@@ -20,7 +20,15 @@
 }
 
 .welcomeName {
-    margin-right: 85px;
+    margin-right: 75px;
+}
+
+.startingDebt {
+    margin-right: 75px;
+}
+
+.debtText {
+    margin-right: 75px;
 }
 
 .editDebtButton {
@@ -36,6 +44,10 @@
 
 .makeContributionButton {
     margin-right: 5px;
+}
+
+.addDebtButton {
+    margin-right: 60px;
 }
 
 .button {
@@ -63,7 +75,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 10px 0 5px 0;
 }
 
 .progressBar {
