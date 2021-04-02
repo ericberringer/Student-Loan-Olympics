@@ -62,12 +62,12 @@ export const DebtForm = () => {
     // Edit debt form
     return (
         <form className="debtForm">
-            <h2 className="debtFormTitle">Debt Form</h2>
-            <fieldset>
+            <h2 className="debtFormTitle">Edit Your Debt</h2>
+            <fieldset className="input">
                 <label htmlFor="debtAmount">Total Debt Amount: $</label>
                 <input type="text" id="amount" name="debtAmount" required className="amountField" onChange={handleInputChange} value={debt.amount}/>
             </fieldset>
-            <fieldset>
+            <fieldset className="input">
                 <label htmlFor="description">Description: </label>
                 <textarea id="description" name="description" required rows="2" cols="20" onChange={handleInputChange} value={debt.description}></textarea>
             </fieldset>
@@ -75,9 +75,10 @@ export const DebtForm = () => {
                 <input type="checkbox" id="checkbox" name="checkbox" onChange={handleInputChange} value={debt.isComplete} defaultChecked={debt.isComplete ? true : false}></input>
                 <label htmlFor="checkbox">Campaign Complete</label>
             </fieldset> */}
-            <button onClick={handleSaveDebt}>
-                Save
-            </button>
+            <div className="formButtonDiv">
+                <button className="homeButton button" onClick={() => history.push("/")}>Return to Home</button>            
+                <button className="formAddSave button" onClick={handleSaveDebt}>Save</button>
+            </div>
         </form>
     )
 }

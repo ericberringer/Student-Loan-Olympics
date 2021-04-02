@@ -44,14 +44,22 @@
 
 .detailSection {
     color: white;
+    background-color: rgba(0, 0, 0, 0.714);
     text-align: center;
-    border: dotted 2px darkslategray;
-    margin: 50px 100px 0 100px;
-    padding-bottom: 20px;
+    margin: 70px 100px 0 100px;
+    padding: 1px 0 20px 0;
     border-radius: 20px;
 }
 
+.detailHeader {
+    font-size: 1.5em;
+}
+
 .detailName {
+    text-decoration: underline;
+}
+
+.detailDiv {
     font-size: 1.5em;
 }
 
