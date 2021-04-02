@@ -104,11 +104,11 @@ export const PropsAndState = ({user, debt, transaction}) => {
                 
                 {/* Tutorial End */}
                 <div className="logoDiv">
-                    <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="400"/>
+                    <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="280"/>
                 </div>
                 <div className="nameDiv">
                     {/* print their name */}
-                    <h2>Welcome {user.name}!</h2>
+                    <h2 className="welcomeName">Welcome {user.name}!</h2>
                 {/* if the user does not have a debt amount yet, print a button that takes the user to a create a debt form
                 if the user does have a debt print their debt amount and subtract each new transaction from that amount */}
                     {debt ? <h3 className="debtText">Starting Debt: ${debt.amount}</h3> : <div></div>}
@@ -135,10 +135,10 @@ export const PropsAndState = ({user, debt, transaction}) => {
         // if the user is a contributor print their name and a contribute button
         <section className="header">
             <div className="logoDiv">
-                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="400"/>
+                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="280"/>
             </div>
             <div>
-                <h2>Welcome {user.name}!</h2>
+                <h2 className="welcomeName">Welcome {user.name}!</h2>
             </div>
             <div className="headerButtonDiv">
                 <h3>Feeling Generous?</h3>

@@ -101,7 +101,7 @@ export const UserDetail = () => {
         competitor ?
             <section className="detailSection">
             <div className="detailHeader">
-                <h3>{user.name}</h3>
+                <h3 className="detailName">{user.name}</h3>
                 <h4>Competitor</h4> 
             </div>    
             <div className="detailDiv">
@@ -111,13 +111,12 @@ export const UserDetail = () => {
                 {Progress()}
                 <h3>Recent Transactions:</h3>
                {
-                // iterate over relevant transactions and find the user whose id matches the userId of the transaction made
+                   // iterate over relevant transactions and find the user whose id matches the userId of the transaction made
                    filteredTransactions.map((t,i) => {
-                    let transactionUser = users.find((user) => user.id === t.userId)
+                       let transactionUser = users.find((user) => user.id === t.userId)
                        return <li className="amountList" key={i}>${t.amount} {transactionUser.name}</li>
                     })
-               }
-
+                }
             {currentUser === parseInt(userId) ? <button onClick={handleDelete} className="deleteDebtButton">Delete Debt</button> : <div></div>}
             </div>
             <button className="homeButton button" onClick={() => history.push("/")}>Return to Home</button>            
@@ -127,20 +126,20 @@ export const UserDetail = () => {
 
         <section className="detailSection">
             <div className="detailHeader">
-                <h3>{user.name}</h3>            
+                <h3 className="detailName">{user.name}</h3>            
                 <h4>Contributor</h4>
                 {TotalContributions()}
             </div>
             <div className="detailDiv">
                 <h3>Transaction History</h3>
                 {
-                // iterate over the relevant transactions and find the debt whose id matches the userId of the filtered transactions.
-                // The name of the user on the debt can be accessed since the user object is embedded in the debt fetch.
+                    // iterate over the relevant transactions and find the debt whose id matches the userId of the filtered transactions.
+                    // The name of the user on the debt can be accessed since the user object is embedded in the debt fetch.
                     filteredTransactions.map((t, i) => {
-                       let debtUser = debts.find((debt) => debt.id === t.debtId)
+                        let debtUser = debts.find((debt) => debt.id === t.debtId)
                         return <li className="amountList" key={i}>${t.amount} {debtUser?.user.name}</li>
                     })     
-    
+                    
                 }
             </div>
             <button className="homeButton button" onClick={() => history.push("/")}>Return to Home</button>            

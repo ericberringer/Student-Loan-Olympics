@@ -65,7 +65,7 @@ export const Login = () => {
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/register">Create Account</Link>
+                <Link className="link" to="/register">Create Account</Link>
             </section>
         </main>
     )

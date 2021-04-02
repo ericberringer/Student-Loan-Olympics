@@ -1,17 +1,13 @@
 .header {
     display: flex;
+    flex: 1 0 28%;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    /* margin: 0 35px; */
+    align-items: center;
     text-align: center;
     padding: 0 30px 10px 30px;
     background-color: rgba(0, 0, 0, 0.714);
     color: white;
-}
-
-.debtText {
-    text-align: left;
 }
 
 .logoDiv {
@@ -21,6 +17,10 @@
 
 .logo {
     margin-top: 28px;
+}
+
+.welcomeName {
+    margin-right: 85px;
 }
 
 .editDebtButton {

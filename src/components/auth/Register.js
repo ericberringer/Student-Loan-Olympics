@@ -97,11 +97,11 @@ export const Register = () => {
                         <option id="2" value="2" required onChange={handleInputChange}>Contributor</option>
                     </select>
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <h3>Image upload needs to go here</h3>
-                </fieldset>
+                </fieldset> */}
                 <fieldset>
-                    <button type="submit"> Register </button>
+                    <button className="button" type="submit"> Register </button>
                 </fieldset>
             </form>
         </main>
