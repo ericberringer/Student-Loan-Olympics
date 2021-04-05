@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     align-items: center;
     text-align: center;
-    padding: 5px 30px 10px 30px;
+    padding: 5px 100px 10px 50px;
     background-color: rgba(0, 0, 0, 0.714);
     color: white;
 }
@@ -19,16 +19,8 @@
     margin-top: 28px;
 }
 
-.welcomeName {
-    margin-right: 75px;
-}
-
-.startingDebt {
-    margin-right: 75px;
-}
-
-.debtText {
-    margin-right: 75px;
+.nameDiv {
+    margin-right: 80px;
 }
 
 .editDebtButton {
@@ -47,7 +39,7 @@
 }
 
 .addDebtButton {
-    margin-right: 60px;
+    margin-right: 20px;
 }
 
 .button {
@@ -65,6 +57,7 @@
 
 .contributorButton {
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 .editDebtButton:hover {

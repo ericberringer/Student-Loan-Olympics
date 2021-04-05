@@ -8,46 +8,6 @@ import "./PropsAndState.css"
 export const PropsAndState = ({user, debt, transaction}) => {
     
     const history = useHistory()
-
-    // ########## Youtube Tutorial ##########
-    // const [fileInputState, setFileInputState] = useState("")
-    // const [selectedFile, setSelectedFile] = useState("")
-    // const [previewSource, setPreviewSource] = useState("")
-    
-
-    // const handleFileInputChange = (e) => {
-    //     const file = e.target.files[0]
-    //     previewFile(file)
-    // }
-
-    // const previewFile = (file) => {
-    //     const reader = new FileReader()
-    //     reader.readAsDataURL(file)
-    //     reader.onloadend = () => {
-    //         setPreviewSource(reader.result)
-    //     }
-    // }    
-
-    // const handleSubmitFile = (e) => {
-    //     console.log("submitting")
-    //     e.preventDefault()
-    //     if(!previewSource) return
-    //     uploadImage(previewSource)
-    // }
-
-    // const uploadImage = async (base64EncodedImage) => {
-    //     console.log(base64EncodedImage)
-    //     try {
-    //         await fetch('/api/upload', {
-    //             method: 'POST',
-    //             body: JSON.stringify({data: base64EncodedImage}),
-    //             headers: {'Content-type': 'application/json'}
-    //         })
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-    // }
-    // ####################################################
     
     // presents a confirmation window and logs out user when 'ok' is selected. This sets the id in session storage to an empty string 
     
@@ -88,23 +48,9 @@ export const PropsAndState = ({user, debt, transaction}) => {
             user.competitor ?
             // if the user is a competitor
             <section className="header">
-               
-                {/* Youtube Tutorial */}
-                    {/* <div>
-                    <form onSubmit={handleSubmitFile}>
-                        <fieldset>
-                            <input type="file" name="image" onChange={handleFileInputChange} value={fileInputState} className="imageUpload"></input>
-                            <button type="submit" className="imageSubmitButton">Submit</button>
-                        </fieldset>
-                        {previewSource && (
-                            <img src={previewSource} alt="chosen" style={{height: "100px"}}/>
-                        )}
-                    </form>
-                </div> */}
                 
-                {/* Tutorial End */}
                 <div className="logoDiv">
-                    <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="280"/>
+                    <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="350"/>
                 </div>
                 <div className="nameDiv">
                     {/* print their name */}
@@ -135,7 +81,7 @@ export const PropsAndState = ({user, debt, transaction}) => {
         // if the user is a contributor print their name and a contribute button
         <section className="header">
             <div className="logoDiv">
-                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="280"/>
+                <img className="logo" src="../SLO-Logo.png" alt="SLO-Logo" width="350"/>
             </div>
             <div>
                 <h2 className="welcomeName">Welcome {user.name}!</h2>
