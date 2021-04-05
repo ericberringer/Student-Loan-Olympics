@@ -11,7 +11,6 @@ export const UserDetail = () => {
     const { users, getUsers, getSelectedUserById } = useContext(UserContext)
     const { transactions, getTransactions } = useContext(TransactionContext)
     const { debts, getDebts, deleteDebt } = useContext(DebtContext)
-    // console.log(transactions)
 
     const [user, setUser] = useState({})
 
@@ -89,9 +88,39 @@ export const UserDetail = () => {
             for(var i = 0; i < amounts.length; i++){
                 totalCont += amounts[i]
             }
-            return <h4>Total Contributions: ${totalCont}</h4>
+            return totalCont
         }
 
+
+        // ############## FORM #################
+
+        const [math, setMath] = useState({
+            grossIncome: 0,
+            totalGiving: 0,
+            answer: 0
+        })
+        // console.log(sum)
+        
+        
+        const handleInputChange = (event) => {
+            event.preventDefault()
+            const newAnswer = { ...math }
+            newAnswer[event.target.id] = parseInt(event.target.value)
+            let estGrossIncome = parseInt(event.target.value)
+            let totalCont = parseInt(event.target.value)
+            setMath(newAnswer)
+        }
+    
+        const handleMath = (event) => {
+            event?.preventDefault()
+            let gross = math.grossIncome
+            let totalCont = math.totalGiving
+            let answer = totalCont/gross * 100
+            const newAnswer = { ...math }
+            newAnswer.answer = answer.toFixed(2)
+            setMath(newAnswer)
+            console.log(newAnswer)
+        }
 
 
     return (
@@ -105,7 +134,7 @@ export const UserDetail = () => {
                 <h4>Competitor</h4> 
             </div>    
             <div className="detailDiv">
-                <h3>Debt Description</h3> 
+                <h3 className="descriptionAndHistory">Debt Description</h3> 
                 <p>{user?.debts[0]?.description}</p>
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
                 {Progress()}
@@ -128,10 +157,10 @@ export const UserDetail = () => {
             <div className="detailHeader">
                 <h3 className="detailName">{user.name}</h3>            
                 <h4>Contributor</h4>
-                {TotalContributions()}
+                <h4>Total Contributions: ${TotalContributions()}</h4>
             </div>
             <div className="detailDiv">
-                <h3>Transaction History</h3>
+                <h3 className="descriptionAndHistory">Transaction History</h3>
                 {
                     // iterate over the relevant transactions and find the debt whose id matches the userId of the filtered transactions.
                     // The name of the user on the debt can be accessed since the user object is embedded in the debt fetch.
@@ -142,6 +171,19 @@ export const UserDetail = () => {
                     
                 }
             </div>
+            {
+            currentUser === parseInt(userId) ?
+            <form className="taxForm">
+                <input type="text" id="grossIncome" name="num1" placeholder="Estimated Gross Income" onChange={handleInputChange} required></input>
+                <input className="amountInput" type="text" id="totalGiving" name="num2" placeholder="Total Contributions" onChange={handleInputChange} required></input>
+                <button className="taxButton button" onClick={handleMath}>Calculate</button>
+            </form>
+        :
+        null
+        }
+        {
+            !math.answer || math.answer === "NaN" ? null : <h3 className="contPerc">You have contributed {math.answer}% of your estimated gross income.</h3>
+        }
             <button className="homeButton button" onClick={() => history.push("/")}>Return to Home</button>            
         </section>
         }
