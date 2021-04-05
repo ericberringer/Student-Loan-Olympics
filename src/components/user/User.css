@@ -40,6 +40,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin: 0 100px;
 }
 
 .detailSection {
@@ -55,6 +56,10 @@
     font-size: 1.5em;
 }
 
+.descriptionAndHistory {
+    text-decoration: underline;
+}
+
 .detailName {
     text-decoration: underline;
 }
@@ -63,10 +68,29 @@
     font-size: 1.5em;
 }
 
-.homeButton {
-    margin: 10px 0 0 0;
-}
-
 .deleteDebtButton {
     margin-top: 20px;
+}
+
+.taxForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.amountInput {
+    margin-top: 10px;
+}
+
+.taxButton {
+    margin: 15px 0;
+}
+
+.homeButton {
+    margin-top: 12px;
+}
+
+.contPerc {
+    font-size: 1.35em;
 }
