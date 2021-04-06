@@ -59,7 +59,7 @@ export const UserDetail = () => {
 
         const Progress = () => {
             // console.log(user.debts[0].amount)
-            const userTotalDebt = user.debts[0].amount
+            const userTotalDebt = user?.debts[0].amount
             const amounts = filteredTransactions.map(t => t.amount)
             let sum = 0
             for(var i = 0; i < amounts.length; i++) {
@@ -99,7 +99,6 @@ export const UserDetail = () => {
             totalGiving: 0,
             answer: 0
         })
-        // console.log(sum)
         
         
         const handleInputChange = (event) => {
@@ -119,7 +118,6 @@ export const UserDetail = () => {
             const newAnswer = { ...math }
             newAnswer.answer = answer.toFixed(2)
             setMath(newAnswer)
-            console.log(newAnswer)
         }
 
 

@@ -10,7 +10,7 @@ export const UserCard = ({user, debt, transaction})=> {
         if(currentDebt < 0) {
             currentDebt = 0
         }
-        return <h4>Total Debt: ${currentDebt}</h4>
+        return <h4>Remaining Debt: ${currentDebt}</h4>
     }
         
     

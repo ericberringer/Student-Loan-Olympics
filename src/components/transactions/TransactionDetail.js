@@ -23,8 +23,6 @@ export const TransactionDetail = () => {
         debtId: 0,
         amount: 0
     })
-
-    console.log(transaction.amount)
     
     
     // Sets the debtId onto the transaction object 
