@@ -59,7 +59,7 @@ export const UserDetail = () => {
 
         const Progress = () => {
             // console.log(user.debts[0].amount)
-            const userTotalDebt = user.debts[0].amount
+            const userTotalDebt = user?.debts[0].amount
             const amounts = filteredTransactions.map(t => t.amount)
             let sum = 0
             for(var i = 0; i < amounts.length; i++) {
@@ -137,7 +137,7 @@ export const UserDetail = () => {
                 <h3 className="descriptionAndHistory">Debt Description</h3> 
                 <p>{user?.debts[0]?.description}</p>
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
-                {Progress()}
+                {user?.debts[0].amount ? Progress() : null}
                 <h3>Recent Transactions:</h3>
                {
                    // iterate over relevant transactions and find the user whose id matches the userId of the transaction made
