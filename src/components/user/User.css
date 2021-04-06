@@ -72,6 +72,11 @@
     margin-top: 20px;
 }
 
+.taxFormTitle {
+    font-size: 1.25em;
+    text-decoration: underline;
+}
+
 .taxForm {
     display: flex;
     align-items: center;
@@ -84,7 +89,7 @@
 }
 
 .taxButton {
-    margin: 15px 0;
+    margin: 15px 0 0 0;
 }
 
 .homeButton {

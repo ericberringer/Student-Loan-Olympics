@@ -174,6 +174,7 @@ export const UserDetail = () => {
             {
             currentUser === parseInt(userId) ?
             <form className="taxForm">
+                <h3 className="taxFormTitle">How Generous Are You?</h3>
                 <input type="text" id="grossIncome" name="num1" placeholder="Estimated Gross Income" onChange={handleInputChange} required></input>
                 <input className="amountInput" type="text" id="totalGiving" name="num2" placeholder="Total Contributions" onChange={handleInputChange} required></input>
                 <button className="taxButton button" onClick={handleMath}>Calculate</button>
