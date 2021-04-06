@@ -99,7 +99,6 @@ export const UserDetail = () => {
             totalGiving: 0,
             answer: 0
         })
-        // console.log(sum)
         
         
         const handleInputChange = (event) => {
@@ -119,7 +118,6 @@ export const UserDetail = () => {
             const newAnswer = { ...math }
             newAnswer.answer = answer.toFixed(2)
             setMath(newAnswer)
-            console.log(newAnswer)
         }
 
 
@@ -137,7 +135,7 @@ export const UserDetail = () => {
                 <h3 className="descriptionAndHistory">Debt Description</h3> 
                 <p>{user?.debts[0]?.description}</p>
                 <h3>Starting Debt: ${user.debts[0]?.amount ? user.debts[0].amount : 0}</h3>
-                {user?.debts[0].amount ? Progress() : null}
+                {Progress()}
                 <h3>Recent Transactions:</h3>
                {
                    // iterate over relevant transactions and find the user whose id matches the userId of the transaction made
